@@ -5,6 +5,10 @@
     <string name="predict">Предсказать</string>
     <string name="test">Оценить состояние</string>
 
+    <string name="percent_hint">Крепость алкоголя</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="or_text">ИЛИ</string>
+
     <string name="name_text">Имя:</string>
     <string name="name_hint">Имя</string>
     <string name="weight_text">Вес:</string>

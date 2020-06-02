@@ -5,6 +5,8 @@
 
     <dimen name="drink_layout_padding">15dp</dimen>
 
+    <dimen name="select_drink_layout_padding">15dp</dimen>
+
     <dimen name="parameters_layout_padding">15dp</dimen>
     <dimen name="parameters_field_size">100dp</dimen>
 
