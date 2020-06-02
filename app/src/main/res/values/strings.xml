@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">DrinkWithMe</string>
+
+    <string name="name_text">Имя:</string>
+    <string name="name_hint">Имя</string>
+    <string name="weight_text">Вес:</string>
+    <string name="weight_hint">Вес</string>
+    <string name="height_text">Рост:</string>
+    <string name="height_hint">Рост</string>
+    <string name="gender_text">Пол:</string>
+    <string name="save_text">Сохранить</string>
+
+    <string-array name="gender_array">
+        <item>М</item>
+        <item>Ж</item>
+    </string-array>
+
 </resources>
