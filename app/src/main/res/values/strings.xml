@@ -8,6 +8,7 @@
     <string name="percent_hint">Крепость алкоголя</string>
     <string name="confirm">Подтвердить</string>
     <string name="or_text">ИЛИ</string>
+    <string name="liter_text">Количество  литров</string>
 
     <string name="name_text">Имя:</string>
     <string name="name_hint">Имя</string>
