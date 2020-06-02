@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">DrinkWithMe</string>
 
+    <string name="drink">Выпить</string>
+    <string name="predict">Предсказать</string>
+    <string name="test">Оценить состояние</string>
+
     <string name="name_text">Имя:</string>
     <string name="name_hint">Имя</string>
     <string name="weight_text">Вес:</string>
