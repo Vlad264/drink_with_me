@@ -19,11 +19,13 @@
     <string name="gender_text">Пол:</string>
     <string name="save_text">Сохранить</string>
 
+    <string name="male">М</string>
+    <string name="female">Ж</string>
     <string-array name="gender_array">
-        <item>М</item>
-        <item>Ж</item>
+        <item>@string/male</item>
+        <item>@string/female</item>
     </string-array>
-
+    
     <string name="success_save">Сохранено</string>
 
     <string name="empty_name_error">Имя не долно быть пустым</string>
@@ -35,6 +37,6 @@
     <string name="default_name">Alex</string>
     <string name="default_weight">50</string>
     <string name="default_height">150</string>
-    <string name="default_gender">M</string>
+    <string name="default_gender">@string/male</string>
 
 </resources>
