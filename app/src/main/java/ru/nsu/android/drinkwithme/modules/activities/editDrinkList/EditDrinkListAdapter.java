@@ -1,6 +1,7 @@
 package ru.nsu.android.drinkwithme.modules.activities.editDrinkList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import ru.nsu.android.drinkwithme.R;
 import ru.nsu.android.drinkwithme.model.Drink;
+import ru.nsu.android.drinkwithme.modules.activities.editDrink.EditDrinkActivity;
 
 public class EditDrinkListAdapter extends RecyclerView.Adapter<EditDrinkListAdapter.DrinkHolder> {
     private Context context;
@@ -47,7 +49,9 @@ public class EditDrinkListAdapter extends RecyclerView.Adapter<EditDrinkListAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, EditDrinkActivity.class);
+                intent.putExtra("ID", drink.getId());
+                context.startActivity(intent);
             }
         });
     }
