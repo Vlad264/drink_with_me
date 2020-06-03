@@ -26,8 +26,11 @@ public class ParametersDBHandler extends SQLiteOpenHelper implements IParameters
 
     private static final String SELECT_TYPE = "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_TYPE + "=?";
 
+    private Context context;
+
     public ParametersDBHandler(Context context) {
         super(context, TABLE_NAME, null, VERSION);
+        this.context = context;
     }
 
     @Override
@@ -125,9 +128,9 @@ public class ParametersDBHandler extends SQLiteOpenHelper implements IParameters
                 + KEY_TYPE + " TEXT NOT NULL UNIQUE,"
                 + KEY_VALUE + " TEXT" + ")";
         db.execSQL(CREATE_TABLE);
-        db.execSQL(INSERT, new String[] {TYPE_NAME, Resources.getSystem().getString(R.string.default_name)});
-        db.execSQL(INSERT, new String[] {TYPE_WEIGHT, Resources.getSystem().getString(R.string.default_weight)});
-        db.execSQL(INSERT, new String[] {TYPE_HEIGHT, Resources.getSystem().getString(R.string.default_height)});
-        db.execSQL(INSERT, new String[] {TYPE_GENDER, Resources.getSystem().getString(R.string.default_gender)});
+        db.execSQL(INSERT, new String[] {TYPE_NAME, context.getString(R.string.default_name)});
+        db.execSQL(INSERT, new String[] {TYPE_WEIGHT, context.getString(R.string.default_weight)});
+        db.execSQL(INSERT, new String[] {TYPE_HEIGHT, context.getString(R.string.default_height)});
+        db.execSQL(INSERT, new String[] {TYPE_GENDER, context.getString(R.string.default_gender)});
     }
 }
