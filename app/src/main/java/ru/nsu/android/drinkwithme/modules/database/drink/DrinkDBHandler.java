@@ -1,6 +1,5 @@
-package ru.nsu.android.drinkwithme.modules.database;
+package ru.nsu.android.drinkwithme.modules.database.drink;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;

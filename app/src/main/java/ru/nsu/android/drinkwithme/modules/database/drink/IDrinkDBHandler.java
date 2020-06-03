@@ -1,4 +1,4 @@
-package ru.nsu.android.drinkwithme.modules.database;
+package ru.nsu.android.drinkwithme.modules.database.drink;
 
 import java.util.List;
 
