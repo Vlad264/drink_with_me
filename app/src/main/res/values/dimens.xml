@@ -2,9 +2,13 @@
 <resources>
 
     <dimen name="main_size">20sp</dimen>
+    <dimen name="drink_info_size">15sp</dimen>
 
     <dimen name="drink_layout_padding">15dp</dimen>
 
+    <dimen name="item_drink_padding">15dp</dimen>
+    <dimen name="edit_drink_layout_padding">15dp</dimen>
+    
     <dimen name="select_drink_layout_padding">15dp</dimen>
     <dimen name="select_liter_edit_text_size">200dp</dimen>
 

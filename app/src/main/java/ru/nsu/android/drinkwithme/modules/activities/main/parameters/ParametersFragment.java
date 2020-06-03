@@ -1,5 +1,6 @@
 package ru.nsu.android.drinkwithme.modules.activities.main.parameters;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import java.util.Locale;
 
 import ru.nsu.android.drinkwithme.R;
+import ru.nsu.android.drinkwithme.modules.activities.editDrinkList.EditDrinkListActivity;
 
 public class ParametersFragment extends Fragment implements IParametersView {
     private IParametersPresenter presenter;
@@ -25,6 +27,7 @@ public class ParametersFragment extends Fragment implements IParametersView {
     private EditText heightEditText;
     private Spinner genderSpinner;
     private Button saveButton;
+    private Button editDrinkListButton;
 
     @Nullable
     @Override
@@ -36,6 +39,7 @@ public class ParametersFragment extends Fragment implements IParametersView {
         heightEditText = view.findViewById(R.id.height_edit);
         genderSpinner = view.findViewById(R.id.gender_spinner);
         saveButton = view.findViewById(R.id.save_button);
+        editDrinkListButton = view.findViewById(R.id.edit_drink_list_button);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +85,14 @@ public class ParametersFragment extends Fragment implements IParametersView {
                         weight,
                         height,
                         genderSpinner.getSelectedItem().toString());
+            }
+        });
+
+        editDrinkListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), EditDrinkListActivity.class);
+                startActivity(intent);
             }
         });
 
