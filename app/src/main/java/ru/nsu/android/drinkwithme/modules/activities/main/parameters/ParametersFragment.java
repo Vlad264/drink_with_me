@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,9 +38,46 @@ public class ParametersFragment extends Fragment implements IParametersView {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (nameEditText.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(),
+                            getResources().getString(R.string.empty_name_error),
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    return;
+                }
+                if (weightEditText.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(),
+                            getResources().getString(R.string.empty_weight_error),
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    return;
+                }
+                if (heightEditText.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(),
+                            getResources().getString(R.string.empty_height_error),
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    return;
+                }
+                int weight = Integer.parseInt(weightEditText.getText().toString());
+                if ((weight < 20) || (weight > 200)) {
+                    Toast.makeText(getContext(),
+                            getResources().getString(R.string.out_of_range_weight_error),
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    return;
+                }
+                int height = Integer.parseInt(heightEditText.getText().toString());
+                if ((height < 50) || (height > 300)) {
+                    Toast.makeText(getContext(),
+                            getResources().getString(R.string.out_of_range_height_error),
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    return;
+                }
                 presenter.saveParameters(nameEditText.getText().toString(),
-                        Integer.parseInt(weightEditText.getText().toString()),
-                        Integer.parseInt(heightEditText.getText().toString()),
+                        weight,
+                        height,
                         genderSpinner.getSelectedItem().toString());
             }
         });

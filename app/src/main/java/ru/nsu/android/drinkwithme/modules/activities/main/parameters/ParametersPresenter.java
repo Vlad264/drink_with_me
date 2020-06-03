@@ -5,4 +5,9 @@ public class ParametersPresenter implements IParametersPresenter {
     public void start() {
 
     }
+
+    @Override
+    public void saveParameters(String name, int weight, int height, String gender) {
+
+    }
 }

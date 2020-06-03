@@ -24,6 +24,12 @@
         <item>Ж</item>
     </string-array>
 
+    <string name="empty_name_error">Имя не долно быть пустым</string>
+    <string name="empty_weight_error">Вес не долн быть пустым</string>
+    <string name="out_of_range_weight_error">Очень странный вес</string>
+    <string name="empty_height_error">Рост не долн быть пустым</string>
+    <string name="out_of_range_height_error">Очень странный рост</string>
+
     <string name="default_name">Alex</string>
     <string name="default_weight">50</string>
     <string name="default_height">150</string>

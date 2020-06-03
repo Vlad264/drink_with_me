@@ -7,6 +7,6 @@ import ru.nsu.android.drinkwithme.modules.base.SwapFragmentActivity;
 public class MainActivity extends SwapFragmentActivity {
     @Override
     protected FragmentPagerAdapter createFragmentPagerAdapter() {
-        return null;
+        return new MainFragmentPagerAdapter(getSupportFragmentManager());
     }
 }
