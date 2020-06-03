@@ -48,5 +48,7 @@
     <string name="empty_drink_name">Имя напитка не должно быть пустым</string>
     <string name="empty_drink_percent">Крепость напитка не должна быть пустым</string>
     <string name="out_of_range_drink_percent">Очень странная крепость напитка</string>
+    <string name="empty_drink_liter">Количество литров не должно быть пустым</string>
+    <string name="out_of_range_drink_liter">Очень странное количество литров</string>
 
 </resources>

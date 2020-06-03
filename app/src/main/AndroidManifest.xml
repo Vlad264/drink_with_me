@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".modules.activities.editDrinkList.EditDrinkListActivity"/>
         <activity android:name=".modules.activities.editDrink.EditDrinkActivity"/>
+        <activity android:name=".modules.activities.selectDrink.SelectDrinkActivity"/>
     </application>
 
 </manifest>
