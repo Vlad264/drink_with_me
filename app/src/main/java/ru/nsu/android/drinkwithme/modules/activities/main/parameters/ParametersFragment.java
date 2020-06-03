@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Locale;
+
 import ru.nsu.android.drinkwithme.R;
 
 public class ParametersFragment extends Fragment implements IParametersView {
@@ -86,6 +88,12 @@ public class ParametersFragment extends Fragment implements IParametersView {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        presenter.start();
+    }
+
+    @Override
     public void setPresenter(IParametersPresenter presenter) {
         this.presenter = presenter;
     }
@@ -93,13 +101,18 @@ public class ParametersFragment extends Fragment implements IParametersView {
     @Override
     public void showParameters(String name, int weight, int height, String gender) {
         nameEditText.setText(name);
-        weightEditText.setText(weight);
-        heightEditText.setText(height);
-        if (gender.equals("M")) {
+        weightEditText.setText(String.format(Locale.ROOT,"%d", weight));
+        heightEditText.setText(String.format(Locale.ROOT,"%d", height));
+        if (gender.equals(genderSpinner.getAdapter().getItem(0).toString())) {
             genderSpinner.setSelection(0);
         } else {
             genderSpinner.setSelection(1);
         }
 
+    }
+
+    @Override
+    public void showSuccess() {
+        Toast.makeText(getContext(), getResources().getString(R.string.success_save), Toast.LENGTH_SHORT).show();
     }
 }

@@ -24,6 +24,8 @@
         <item>Ж</item>
     </string-array>
 
+    <string name="success_save">Сохранено</string>
+
     <string name="empty_name_error">Имя не долно быть пустым</string>
     <string name="empty_weight_error">Вес не долн быть пустым</string>
     <string name="out_of_range_weight_error">Очень странный вес</string>
