@@ -5,6 +5,8 @@
     <dimen name="drink_info_size">15sp</dimen>
     <dimen name="history_size">15sp</dimen>
 
+    <dimen name="circle_radius">50dp</dimen>
+
     <dimen name="drink_layout_padding">15dp</dimen>
     <dimen name="drink_field_size">120dp</dimen>
 

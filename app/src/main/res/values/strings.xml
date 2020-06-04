@@ -13,6 +13,8 @@
     <string name="empty_history">Данная история пока что пустая</string>
     <string name="next_group_error">Текущая история пока что пустая</string>
 
+    <string name="dot_test_number">5</string>
+
     <string name="drink_name_hint">Название напитка</string>
     <string name="percent_hint">Крепость напитка</string>
     <string name="add">Добавть</string>
