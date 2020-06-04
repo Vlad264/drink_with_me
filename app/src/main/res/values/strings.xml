@@ -13,7 +13,15 @@
     <string name="empty_history">Данная история пока что пустая</string>
     <string name="next_group_error">Текущая история пока что пустая</string>
 
+    <string name="arithmetic_edit_hint">Введите ответ</string>
+    <string name="answer">Ответить</string>
+
+    <string name="success">Верно</string>
+    <string name="failure">Не верно</string>
+    <string name="answer_empty_error">Ответ не должен быть пустым</string>
+
     <string name="dot_test_number">5</string>
+    <string name="arithmetic_test_number">5</string>
 
     <string name="drink_name_hint">Название напитка</string>
     <string name="percent_hint">Крепость напитка</string>
