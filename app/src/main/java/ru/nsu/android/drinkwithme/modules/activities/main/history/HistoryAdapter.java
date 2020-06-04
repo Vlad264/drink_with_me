@@ -32,18 +32,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
 
     @Override
     public void onBindViewHolder(@NonNull HistoryHolder holder, int position) {
-        List<DrinkLiter> currentHistory = history.get(position);
+        List<DrinkLiter> currentHistory = history.get(history.size() - 1 - position);
         StringBuilder historyText = new StringBuilder();
         for (DrinkLiter drink : currentHistory) {
-            historyText.append(drink.getName());
-            historyText.append(" (");
-            historyText.append(drink.getPercent());
-            historyText.append("%) ");
-            historyText.append(drink.getLiter());
-            historyText.append("л.\n");
+            historyText.insert(0," л.\n");
+            historyText.insert(0, drink.getLiter());
+            historyText.insert(0,"%) ");
+            historyText.insert(0, drink.getPercent());
+            historyText.insert(0," (");
+            historyText.insert(0, drink.getName());
         }
-        if (currentHistory.isEmpty()) {
-            historyText.append(context.getResources().getString(R.string.empty_history));
+        if (position == 0) {
+            holder.historyTitle.setText(R.string.current_history);
+            if (currentHistory.isEmpty()) {
+                historyText.append(context.getResources().getString(R.string.empty_history));
+            }
         }
         holder.historyText.setText(historyText.toString());
     }
@@ -54,10 +57,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
     }
 
     public static final class HistoryHolder extends RecyclerView.ViewHolder {
+        public TextView historyTitle;
         public TextView historyText;
 
         public HistoryHolder(@NonNull View itemView) {
             super(itemView);
+            historyTitle = itemView.findViewById(R.id.history_title);
             historyText = itemView.findViewById(R.id.history_text);
             historyText.setSingleLine(false);
         }
