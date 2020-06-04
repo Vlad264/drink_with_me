@@ -3,6 +3,7 @@
 
     <dimen name="main_size">20sp</dimen>
     <dimen name="drink_info_size">15sp</dimen>
+    <dimen name="history_size">15sp</dimen>
 
     <dimen name="drink_layout_padding">15dp</dimen>
     <dimen name="drink_field_size">120dp</dimen>
@@ -12,6 +13,8 @@
     
     <dimen name="select_drink_layout_padding">15dp</dimen>
     <dimen name="select_liter_edit_text_size">200dp</dimen>
+
+    <dimen name="history_layout_padding">15dp</dimen>
 
     <dimen name="parameters_layout_padding">15dp</dimen>
     <dimen name="parameters_field_size">100dp</dimen>

@@ -136,5 +136,12 @@ public class DrinkDBHandler extends SQLiteOpenHelper implements IDrinkDBHandler 
                 + KEY_NAME + " TEXT,"
                 + KEY_PERCENT + " INTEGER" + ")";
         db.execSQL(CREATE_TABLE);
+        db.execSQL(INSERT, new String[] {"Пиво", "2"});
+        db.execSQL(INSERT, new String[] {"Сидр", "3"});
+        db.execSQL(INSERT, new String[] {"Водка", "30"});
+        db.execSQL(INSERT, new String[] {"Ликер", "30"});
+        db.execSQL(INSERT, new String[] {"Ром", "30"});
+        db.execSQL(INSERT, new String[] {"Абсент", "70"});
+        db.execSQL(INSERT, new String[] {"Медицинский спирт", "100"});
     }
 }

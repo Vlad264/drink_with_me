@@ -9,6 +9,9 @@
     <string name="drink">Выпить</string>
     <string name="predict">Предсказать</string>
     <string name="test">Оценить состояние</string>
+    <string name="new_group">Закрыть текущую историю</string>
+    <string name="empty_history">Данная история пока что пустая</string>
+    <string name="next_group_error">Текущая история пока что пустая</string>
 
     <string name="drink_name_hint">Название напитка</string>
     <string name="percent_hint">Крепость напитка</string>
