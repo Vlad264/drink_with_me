@@ -2,6 +2,7 @@
 <resources>
 
     <dimen name="main_size">20sp</dimen>
+    <dimen name="description_size">15sp</dimen>
     <dimen name="drink_info_size">15sp</dimen>
     <dimen name="history_size">15sp</dimen>
 

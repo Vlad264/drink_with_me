@@ -6,13 +6,6 @@
     <string name="default_height">150</string>
     <string name="default_gender">@string/male</string>
 
-    <string name="drink">Выпить</string>
-    <string name="predict">Предсказать</string>
-    <string name="test">Оценить состояние</string>
-    <string name="new_group">Закрыть текущую историю</string>
-    <string name="empty_history">Данная история пока что пустая\n</string>
-    <string name="next_group_error">Текущая история пока что пустая</string>
-
     <string name="arithmetic_edit_hint">Введите ответ</string>
     <string name="answer">Ответить</string>
 
@@ -22,6 +15,18 @@
 
     <string name="dot_test_number">5</string>
     <string name="arithmetic_test_number">5</string>
+    
+    <string name="alcohol_percent">Процент алкоголя в крови: </string>
+    <string name="description_title">Объяснение:</string>
+    <string name="current_state_title">Текущее состояние:</string>
+    <string name="predict_title">Предсказание: </string>
+
+    <string name="drink">Выпить</string>
+    <string name="predict">Предсказать</string>
+    <string name="test">Оценить состояние</string>
+    <string name="new_group">Закрыть текущую историю</string>
+    <string name="empty_history">Данная история пока что пустая\n</string>
+    <string name="next_group_error">Текущая история пока что пустая</string>
 
     <string name="current_history">Текущая история:</string>
     <string name="past_history">Прошлая история:</string>
@@ -68,5 +73,8 @@
     <string name="out_of_range_drink_percent">Очень странная крепость напитка</string>
     <string name="empty_drink_liter">Количество литров не должно быть пустым</string>
     <string name="out_of_range_drink_liter">Очень странное количество литров</string>
+
+    <string name="if_drink_app_text">Если выпить:</string>
+    <string name="if_drink_alcohol_percent_app_text">Процент алкоголя в крови будет: </string>
 
 </resources>

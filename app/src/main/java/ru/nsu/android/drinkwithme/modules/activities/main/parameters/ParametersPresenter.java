@@ -2,6 +2,7 @@ package ru.nsu.android.drinkwithme.modules.activities.main.parameters;
 
 import ru.nsu.android.drinkwithme.common.useCaseEngine.IUseCaseCallback;
 import ru.nsu.android.drinkwithme.common.useCaseEngine.UseCaseHandler;
+import ru.nsu.android.drinkwithme.modules.activities.main.drink.IDrinkPresenter;
 import ru.nsu.android.drinkwithme.modules.database.parameters.IParametersDBHandler;
 import ru.nsu.android.drinkwithme.modules.useCases.GetParameters;
 import ru.nsu.android.drinkwithme.modules.useCases.UpdateParameters;
@@ -10,11 +11,13 @@ public class ParametersPresenter implements IParametersPresenter {
     private IParametersView view;
     private UseCaseHandler handler;
     private IParametersDBHandler dbHandler;
+    private IDrinkPresenter drinkPresenter;
 
-    public ParametersPresenter(IParametersView view, UseCaseHandler handler, IParametersDBHandler dbHandler) {
+    public ParametersPresenter(IParametersView view, UseCaseHandler handler, IParametersDBHandler dbHandler, IDrinkPresenter drinkPresenter) {
         this.view = view;
         this.handler = handler;
         this.dbHandler = dbHandler;
+        this.drinkPresenter = drinkPresenter;
     }
 
     @Override
@@ -42,6 +45,7 @@ public class ParametersPresenter implements IParametersPresenter {
             @Override
             public void onSuccess(UpdateParameters.ResponseValues response) {
                 view.showSuccess();
+                drinkPresenter.start();
             }
 
             @Override

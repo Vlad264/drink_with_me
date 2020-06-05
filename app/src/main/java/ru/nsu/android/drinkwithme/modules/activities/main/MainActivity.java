@@ -28,6 +28,6 @@ public class MainActivity extends SwapFragmentActivity {
 
     @Override
     protected FragmentPagerAdapter createFragmentPagerAdapter() {
-        return new MainFragmentPagerAdapter(getSupportFragmentManager(), handler, historyDBHandler, parametersDBHandler);
+        return new MainFragmentPagerAdapter(getSupportFragmentManager(), this, handler, historyDBHandler, parametersDBHandler);
     }
 }

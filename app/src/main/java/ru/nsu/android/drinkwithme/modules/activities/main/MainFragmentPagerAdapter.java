@@ -1,5 +1,7 @@
 package ru.nsu.android.drinkwithme.modules.activities.main;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import ru.nsu.android.drinkwithme.common.useCaseEngine.UseCaseHandler;
 import ru.nsu.android.drinkwithme.modules.activities.main.drink.DrinkFragment;
 import ru.nsu.android.drinkwithme.modules.activities.main.drink.DrinkPresenter;
+import ru.nsu.android.drinkwithme.modules.activities.main.drink.IDrinkPresenter;
 import ru.nsu.android.drinkwithme.modules.activities.main.history.HistoryFragment;
 import ru.nsu.android.drinkwithme.modules.activities.main.history.HistoryPresenter;
 import ru.nsu.android.drinkwithme.modules.activities.main.parameters.ParametersFragment;
@@ -21,17 +24,18 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
     private HistoryFragment historyFragment;
     private ParametersFragment parametersFragment;
 
-    public MainFragmentPagerAdapter(@NonNull FragmentManager fm, UseCaseHandler handler, IHistoryDBHandler historyDBHandler, IParametersDBHandler parametersDBHandler) {
+    public MainFragmentPagerAdapter(@NonNull FragmentManager fm, Context context, UseCaseHandler handler, IHistoryDBHandler historyDBHandler, IParametersDBHandler parametersDBHandler) {
         super(fm, FragmentPagerAdapter.BEHAVIOR_SET_USER_VISIBLE_HINT);
 
         drinkFragment = new DrinkFragment();
-        drinkFragment.setPresenter(new DrinkPresenter(drinkFragment, handler, historyDBHandler));
+        IDrinkPresenter drinkPresenter = new DrinkPresenter(context, drinkFragment, handler, historyDBHandler, parametersDBHandler);
+        drinkFragment.setPresenter(drinkPresenter);
 
         historyFragment = new HistoryFragment();
-        historyFragment.setPresenter(new HistoryPresenter(historyFragment, handler, historyDBHandler));
+        historyFragment.setPresenter(new HistoryPresenter(historyFragment, handler, historyDBHandler, drinkPresenter));
 
         parametersFragment = new ParametersFragment();
-        parametersFragment.setPresenter(new ParametersPresenter(parametersFragment, handler, parametersDBHandler));
+        parametersFragment.setPresenter(new ParametersPresenter(parametersFragment, handler, parametersDBHandler, drinkPresenter));
     }
 
     @NonNull
