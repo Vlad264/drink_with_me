@@ -56,10 +56,23 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
                 historyText.append(context.getResources().getString(R.string.empty_history));
             }
         }
-        if (states.get(states.size() - 1 - position) == -1) {
-            holder.stateText.setText(context.getString(R.string.no_test_text));
-        } else {
-
+        int state = states.get(states.size() - 1 - position);
+        switch (state) {
+            case -1:
+                holder.stateText.setText(context.getString(R.string.no_state_app_text));
+                break;
+            case 0:
+                holder.stateText.setText(context.getString(R.string.state_0_name_app_text));
+                break;
+            case 1:
+                holder.stateText.setText(context.getString(R.string.state_1_name_app_text));
+                break;
+            case 2:
+                holder.stateText.setText(context.getString(R.string.state_2_name_app_text));
+                break;
+            case 3:
+                holder.stateText.setText(context.getString(R.string.state_3_name_app_text));
+                break;
         }
     }
 

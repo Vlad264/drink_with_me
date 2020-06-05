@@ -6,15 +6,20 @@
     <string name="default_height">150</string>
     <string name="default_gender">@string/male</string>
 
-    <string name="arithmetic_edit_hint">Введите ответ</string>
-    <string name="answer">Ответить</string>
+    <string name="if_drink_app_text">Если выпить:</string>
+    <string name="if_drink_alcohol_percent_app_text">Процент алкоголя в крови будет: </string>
 
-    <string name="success">Верно</string>
-    <string name="failure">Не верно</string>
-    <string name="answer_empty_error">Ответ не должен быть пустым</string>
+    <string name="no_state_app_text">Проврка не проводилась</string>
+    <string name="state_0_name_app_text">Легкое</string>
+    <string name="state_1_name_app_text">Среднее</string>
+    <string name="state_2_name_app_text">Сильное</string>
+    <string name="state_3_name_app_text">Опасное</string>
 
     <string name="dot_test_number">5</string>
     <string name="arithmetic_test_number">5</string>
+
+    <string name="arithmetic_edit_hint">Введите ответ</string>
+    <string name="answer">Ответить</string>
     
     <string name="alcohol_percent">Процент алкоголя в крови: </string>
     <string name="description_title">Объяснение:</string>
@@ -28,10 +33,13 @@
     <string name="empty_history">Данная история пока что пустая\n</string>
     <string name="next_group_error">Текущая история пока что пустая</string>
 
+    <string name="success">Верно</string>
+    <string name="failure">Не верно</string>
+    <string name="answer_empty_error">Ответ не должен быть пустым</string>
+
     <string name="current_history">Текущая история:</string>
     <string name="past_history">Прошлая история:</string>
     <string name="text_result">Состояние:</string>
-    <string name="no_test_text">Проврка не проводилась</string>
 
     <string name="drink_name_hint">Название напитка</string>
     <string name="percent_hint">Крепость напитка</string>
@@ -73,8 +81,5 @@
     <string name="out_of_range_drink_percent">Очень странная крепость напитка</string>
     <string name="empty_drink_liter">Количество литров не должно быть пустым</string>
     <string name="out_of_range_drink_liter">Очень странное количество литров</string>
-
-    <string name="if_drink_app_text">Если выпить:</string>
-    <string name="if_drink_alcohol_percent_app_text">Процент алкоголя в крови будет: </string>
 
 </resources>
