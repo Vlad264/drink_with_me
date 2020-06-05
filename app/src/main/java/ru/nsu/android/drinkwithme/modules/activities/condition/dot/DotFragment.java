@@ -10,6 +10,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -100,6 +101,16 @@ public class DotFragment extends Fragment implements IDotView, SurfaceHolder.Cal
     @Override
     public int getRadius() {
         return radius;
+    }
+
+    @Override
+    public void showTime(final long time) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getContext(), Long.toString(time), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

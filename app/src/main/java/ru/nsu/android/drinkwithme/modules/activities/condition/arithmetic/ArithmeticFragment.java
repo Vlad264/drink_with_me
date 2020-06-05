@@ -97,4 +97,14 @@ public class ArithmeticFragment extends Fragment implements IArithmeticView {
             }
         });
     }
+
+    @Override
+    public void showTime(final long time) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getContext(), Long.toString(time), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

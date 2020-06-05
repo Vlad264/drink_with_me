@@ -7,4 +7,5 @@ public interface IDotView extends IBaseView<IDotPresenter> {
     int getWidth();
     int getHeight();
     int getRadius();
+    void showTime(long time);
 }
