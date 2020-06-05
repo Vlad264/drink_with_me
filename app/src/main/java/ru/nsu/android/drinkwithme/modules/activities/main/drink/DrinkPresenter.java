@@ -41,6 +41,7 @@ public class DrinkPresenter implements IDrinkPresenter {
             public void onSuccess(GetHistoryAndParameters.ResponseValues response) {
                 double percent = calculateAlcoholPercent(response.getHistory(), response.getWeight(), response.getGender());
                 view.showPercent(percent);
+                view.showDescription(response.getName() + textForPercent(percent));
             }
 
             @Override
@@ -135,5 +136,22 @@ public class DrinkPresenter implements IDrinkPresenter {
 
     private double calculateAlcoholMass(DrinkLiter drink) {
         return (drink.getLiter() * 1000) * (drink.getPercent() * 0.01) * 0.8;
+    }
+
+    private String textForPercent(double percent) {
+        if (percent <= 0.5) {
+            return context.getString(R.string.percent_less_0_5_app_text);
+        } else if (percent <= 1.0) {
+            return context.getString(R.string.percent_less_1_0_app_text);
+        } else if (percent <= 2.0) {
+            return context.getString(R.string.percent_less_2_0_app_text);
+        } else if (percent <= 3.0) {
+            return context.getString(R.string.percent_less_3_0_app_text);
+        } else if (percent <= 4.0) {
+            return context.getString(R.string.percent_less_4_0_app_text);
+        } else if (percent <= 5.0) {
+            return context.getString(R.string.percent_less_5_0_app_text);
+        }
+        return context.getString(R.string.percent_more_5_0_app_text);
     }
 }
