@@ -49,13 +49,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
             historyText.append(drink.getLiter());
             historyText.append(" л.\n");
         }
-        holder.historyText.setText(historyText.toString());
         if (position == 0) {
             holder.historyTitle.setText(R.string.current_history);
             if (currentHistory.isEmpty()) {
                 historyText.append(context.getResources().getString(R.string.empty_history));
             }
         }
+        holder.historyText.setText(historyText.toString());
         int state = states.get(states.size() - 1 - position);
         switch (state) {
             case -1:
