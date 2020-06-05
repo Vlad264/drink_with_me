@@ -15,7 +15,7 @@ public class GetHistory extends UseCase<GetHistory.RequestValues, GetHistory.Res
 
     @Override
     protected void executeUseCase(RequestValues requestValues) {
-        getUseCaseCallback().onSuccess(new ResponseValues(dbHandler.getAll()));
+        getUseCaseCallback().onSuccess(new ResponseValues(dbHandler.getAll(), dbHandler.getAllStates()));
     }
 
     public static final class RequestValues implements UseCase.RequestValues {
@@ -23,13 +23,19 @@ public class GetHistory extends UseCase<GetHistory.RequestValues, GetHistory.Res
 
     public static final class ResponseValues implements UseCase.ResponseValues {
         List<List<DrinkLiter>> history;
+        List<Integer> states;
 
-        public ResponseValues(List<List<DrinkLiter>> history) {
+        public ResponseValues(List<List<DrinkLiter>> history, List<Integer> states) {
             this.history = history;
+            this.states = states;
         }
 
         public List<List<DrinkLiter>> getHistory() {
             return history;
+        }
+
+        public List<Integer> getStates() {
+            return states;
         }
     }
 }

@@ -42,7 +42,7 @@ public class HistoryFragment extends Fragment implements IHistoryView {
 
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         historyRecyclerView.setLayoutManager(manager);
-        historyRecyclerView.setAdapter(new HistoryAdapter(getContext(), new LinkedList<List<DrinkLiter>>()));
+        historyRecyclerView.setAdapter(new HistoryAdapter(getContext(), new LinkedList<List<DrinkLiter>>(), new LinkedList<Integer>()));
 
         return view;
     }
@@ -59,8 +59,8 @@ public class HistoryFragment extends Fragment implements IHistoryView {
     }
 
     @Override
-    public void showHistory(List<List<DrinkLiter>> history) {
-        historyRecyclerView.setAdapter(new HistoryAdapter(getContext(), history));
+    public void showHistory(List<List<DrinkLiter>> history, List<Integer> states) {
+        historyRecyclerView.setAdapter(new HistoryAdapter(getContext(), history, states));
     }
 
     @Override

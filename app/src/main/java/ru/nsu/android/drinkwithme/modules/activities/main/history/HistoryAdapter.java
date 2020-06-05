@@ -17,10 +17,12 @@ import ru.nsu.android.drinkwithme.model.DrinkLiter;
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryHolder> {
     private Context context;
     private List<List<DrinkLiter>> history;
+    private List<Integer> states;
 
-    public HistoryAdapter(Context context, List<List<DrinkLiter>> history) {
+    public HistoryAdapter(Context context, List<List<DrinkLiter>> history, List<Integer> states) {
         this.context = context;
         this.history = history;
+        this.states = states;
     }
 
     @NonNull
@@ -35,20 +37,30 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
         List<DrinkLiter> currentHistory = history.get(history.size() - 1 - position);
         StringBuilder historyText = new StringBuilder();
         for (DrinkLiter drink : currentHistory) {
-            historyText.insert(0," л.\n");
-            historyText.insert(0, drink.getLiter());
-            historyText.insert(0,"%) ");
-            historyText.insert(0, drink.getPercent());
-            historyText.insert(0," (");
-            historyText.insert(0, drink.getName());
+            historyText.append(currentHistory.indexOf(drink) + 1);
+            historyText.append(". ");
+            if (!drink.getName().isEmpty()) {
+                historyText.append(drink.getName());
+                historyText.append(" ");
+            }
+            historyText.append("(");
+            historyText.append(drink.getPercent());
+            historyText.append("%) ");
+            historyText.append(drink.getLiter());
+            historyText.append(" л.\n");
         }
+        holder.historyText.setText(historyText.toString());
         if (position == 0) {
             holder.historyTitle.setText(R.string.current_history);
             if (currentHistory.isEmpty()) {
                 historyText.append(context.getResources().getString(R.string.empty_history));
             }
         }
-        holder.historyText.setText(historyText.toString());
+        if (states.get(states.size() - 1 - position) == -1) {
+            holder.stateText.setText(context.getString(R.string.no_test_text));
+        } else {
+
+        }
     }
 
     @Override
@@ -59,12 +71,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
     public static final class HistoryHolder extends RecyclerView.ViewHolder {
         public TextView historyTitle;
         public TextView historyText;
+        public TextView stateText;
 
         public HistoryHolder(@NonNull View itemView) {
             super(itemView);
             historyTitle = itemView.findViewById(R.id.history_title);
             historyText = itemView.findViewById(R.id.history_text);
             historyText.setSingleLine(false);
+            stateText = itemView.findViewById(R.id.test_result_text);
+            stateText.setSingleLine(false);
         }
     }
 }

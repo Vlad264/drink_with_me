@@ -26,6 +26,7 @@
     <string name="current_history">Текущая история:</string>
     <string name="past_history">Прошлая история:</string>
     <string name="text_result">Состояние:</string>
+    <string name="no_test_text">Проврка не проводилась</string>
 
     <string name="drink_name_hint">Название напитка</string>
     <string name="percent_hint">Крепость напитка</string>

@@ -24,7 +24,7 @@ public class HistoryPresenter implements IHistoryPresenter {
         handler.execute(getHistory, requestValues, new IUseCaseCallback<GetHistory.ResponseValues>() {
             @Override
             public void onSuccess(GetHistory.ResponseValues response) {
-                view.showHistory(response.getHistory());
+                view.showHistory(response.getHistory(), response.getStates());
             }
 
             @Override
