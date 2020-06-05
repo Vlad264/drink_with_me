@@ -7,6 +7,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import ru.nsu.android.drinkwithme.R;
 
 public class ParametersDBHandler extends SQLiteOpenHelper implements IParametersDBHandler {
@@ -27,6 +29,8 @@ public class ParametersDBHandler extends SQLiteOpenHelper implements IParameters
     private static final String SELECT_TYPE = "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_TYPE + "=?";
 
     private Context context;
+    private AtomicInteger countOpen = new AtomicInteger(0);
+    private SQLiteDatabase writableDatabase;
 
     public ParametersDBHandler(Context context) {
         super(context, TABLE_NAME, null, VERSION);
@@ -95,22 +99,22 @@ public class ParametersDBHandler extends SQLiteOpenHelper implements IParameters
     }
 
     private void updateType(String type, String value) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = openDataBase();
         db.execSQL(UPDATE, new String[] {value, type});
-        db.close();
+        closeDataBase();
     }
 
     private String getType(String type) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = openDataBase();
         Cursor cursor = db.rawQuery(SELECT_TYPE, new String[] { type });
         if (cursor.moveToNext()) {
             String result = cursor.getString(1);
             cursor.close();
-            db.close();
+            closeDataBase();
             return result;
         }
         cursor.close();
-        db.close();
+        closeDataBase();
         return null;
     }
 
@@ -132,5 +136,20 @@ public class ParametersDBHandler extends SQLiteOpenHelper implements IParameters
         db.execSQL(INSERT, new String[] {TYPE_WEIGHT, context.getString(R.string.default_weight)});
         db.execSQL(INSERT, new String[] {TYPE_HEIGHT, context.getString(R.string.default_height)});
         db.execSQL(INSERT, new String[] {TYPE_GENDER, context.getString(R.string.default_gender)});
+    }
+
+    private SQLiteDatabase openDataBase() {
+        synchronized (this) {
+            if (countOpen.incrementAndGet() == 1) {
+                writableDatabase = getWritableDatabase();
+            }
+        }
+        return writableDatabase;
+    }
+
+    private void closeDataBase() {
+        if (countOpen.decrementAndGet() == 0) {
+            writableDatabase.close();
+        }
     }
 }
