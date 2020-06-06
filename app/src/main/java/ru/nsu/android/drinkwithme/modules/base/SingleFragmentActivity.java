@@ -1,5 +1,6 @@
 package ru.nsu.android.drinkwithme.modules.base;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_fragment);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, createFirstFragment())
