@@ -15,6 +15,8 @@
     <string name="state_2_name_app_text">Сильное</string>
     <string name="state_3_name_app_text">Опасное</string>
     <string name="condition_app_text">состояние.</string>
+    <string name="history_predict_app_text">Судя по истории, состояние будет: </string>
+    <string name="no_history_predict_app_text">По истории ничего сказать нельзя.</string>
 
     <string name="percent_less_0_5_app_text">
         , все нормально.

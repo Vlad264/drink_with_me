@@ -14,6 +14,7 @@ import ru.nsu.android.drinkwithme.modules.database.parameters.IParametersDBHandl
 import ru.nsu.android.drinkwithme.modules.useCases.AddHistory;
 import ru.nsu.android.drinkwithme.modules.useCases.AddState;
 import ru.nsu.android.drinkwithme.modules.useCases.GetHistoryAndParameters;
+import ru.nsu.android.drinkwithme.modules.useCases.GetPredict;
 import ru.nsu.android.drinkwithme.modules.useCases.GetState;
 
 public class DrinkPresenter implements IDrinkPresenter {
@@ -119,28 +120,16 @@ public class DrinkPresenter implements IDrinkPresenter {
 
     @Override
     public void predict(final String name, final int percent, final double liter) {
-        GetHistoryAndParameters getHistoryAndParameters = new GetHistoryAndParameters(historyDBHandler, parametersDBHandler);
-        GetHistoryAndParameters.RequestValues requestValues = new GetHistoryAndParameters.RequestValues();
-        handler.execute(getHistoryAndParameters, requestValues, new IUseCaseCallback<GetHistoryAndParameters.ResponseValues>() {
+        GetPredict getPredict = new GetPredict(historyDBHandler, parametersDBHandler);
+        GetPredict.RequestValues requestValues = new GetPredict.RequestValues(name, percent, liter);
+        handler.execute(getPredict, requestValues, new IUseCaseCallback<GetPredict.ResponseValues>() {
             @Override
-            public void onSuccess(GetHistoryAndParameters.ResponseValues response) {
-                List<DrinkLiter> history = response.getHistory();
-                history.add(new DrinkLiter(name, percent, liter));
-                double bloodPercent = calculateAlcoholPercent(response.getHistory(), response.getWeight(), response.getGender());
+            public void onSuccess(GetPredict.ResponseValues response) {
+                double bloodPercent = calculateAlcoholPercent(response.getCurrentHistory(), response.getWeight(), response.getGender());
                 StringBuilder text = new StringBuilder();
-                text.append(context.getString(R.string.if_drink_app_text));
-                text.append(" ");
-                if (!name.isEmpty()) {
-                    text.append(name);
-                    text.append(" ");
-                }
-                text.append("(");
-                text.append(percent);
-                text.append("%) ");
-                text.append(liter);
-                text.append(" л.\n");
-                text.append(String.format(Locale.ROOT, "%s %.2f", context.getString(R.string.if_drink_alcohol_percent_app_text), bloodPercent));
-                text.append("\n");
+                text.append(predictMainText(response.getCurrentHistory().get(response.getCurrentHistory().size() - 1), bloodPercent));
+                text.append(predictDescription(response.getName(), bloodPercent));
+                text.append(predictByHistory(response.getAllHistory(), response.getStates(), bloodPercent, response.getWeight(), response.getGender()));
                 view.showPredict(text.toString());
             }
 
@@ -168,6 +157,58 @@ public class DrinkPresenter implements IDrinkPresenter {
 
     private double calculateAlcoholMass(DrinkLiter drink) {
         return (drink.getLiter() * 1000) * (drink.getPercent() * 0.01) * 0.8;
+    }
+
+    private String predictMainText(DrinkLiter lastDrink, double bloodPercent) {
+        StringBuilder text = new StringBuilder();
+        text.append(context.getString(R.string.if_drink_app_text));
+        text.append(" ");
+        if (!lastDrink.getName().isEmpty()) {
+            text.append(lastDrink.getName());
+            text.append(" ");
+        }
+        text.append("(");
+        text.append(lastDrink.getPercent());
+        text.append("%) ");
+        text.append(lastDrink.getLiter());
+        text.append(" л.\n");
+        text.append(String.format(Locale.ROOT, "%s %.2f", context.getString(R.string.if_drink_alcohol_percent_app_text), bloodPercent));
+        text.append("\n");
+        return text.toString();
+    }
+
+    private String predictDescription(String name, double bloodPercent) {
+        return name + textForPercent(bloodPercent) + "\n";
+    }
+
+    private String predictByHistory(List<List<DrinkLiter>> history, List<Integer> states, double bloodPercent, int weight, String gender) {
+        for (int i = 0; i < history.size() - 1; ++i) {
+            if (states.get(i) != -1) {
+                double historyPercent = calculateAlcoholPercent(history.get(i), weight, gender);
+                if ((bloodPercent >= historyPercent - 0.5) && (bloodPercent <= historyPercent + 0.5)) {
+                    StringBuilder text = new StringBuilder();
+                    text.append(context.getString(R.string.history_predict_app_text));
+                    text.append(" ");
+                    switch (states.get(i)) {
+                        case 0:
+                            text.append(context.getString(R.string.state_0_name_app_text));
+                            break;
+                        case 1:
+                            text.append(context.getString(R.string.state_1_name_app_text));
+                            break;
+                        case 2:
+                            text.append(context.getString(R.string.state_2_name_app_text));
+                            break;
+                        case 3:
+                            text.append(context.getString(R.string.state_3_name_app_text));
+                            break;
+                    }
+                    text.append(".");
+                    return text.toString();
+                }
+            }
+        }
+        return context.getString(R.string.no_history_predict_app_text);
     }
 
     private String textForPercent(double percent) {
