@@ -14,6 +14,7 @@
     <string name="state_1_name_app_text">Среднее</string>
     <string name="state_2_name_app_text">Сильное</string>
     <string name="state_3_name_app_text">Опасное</string>
+    <string name="condition_app_text">состояние.</string>
 
     <string name="percent_less_0_5_app_text">
         , все нормально.

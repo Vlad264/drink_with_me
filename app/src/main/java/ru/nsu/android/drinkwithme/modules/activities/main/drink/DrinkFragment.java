@@ -117,6 +117,11 @@ public class DrinkFragment extends Fragment implements IDrinkView {
 
     @Override
     public void showCurrentState(String text) {
+        if (text == null) {
+            currentStateTitle.setVisibility(View.GONE);
+            currentStateText.setVisibility(View.GONE);
+            return;
+        }
         currentStateTitle.setVisibility(View.VISIBLE);
         currentStateText.setVisibility(View.VISIBLE);
         currentStateText.setText(text);
@@ -124,6 +129,11 @@ public class DrinkFragment extends Fragment implements IDrinkView {
 
     @Override
     public void showPredict(String text) {
+        if (text == null) {
+            predictTitle.setVisibility(View.GONE);
+            predictText.setVisibility(View.GONE);
+            return;
+        }
         predictTitle.setVisibility(View.VISIBLE);
         predictText.setVisibility(View.VISIBLE);
         predictText.setText(text);

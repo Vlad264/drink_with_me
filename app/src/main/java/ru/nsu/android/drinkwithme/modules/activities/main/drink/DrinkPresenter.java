@@ -14,6 +14,7 @@ import ru.nsu.android.drinkwithme.modules.database.parameters.IParametersDBHandl
 import ru.nsu.android.drinkwithme.modules.useCases.AddHistory;
 import ru.nsu.android.drinkwithme.modules.useCases.AddState;
 import ru.nsu.android.drinkwithme.modules.useCases.GetHistoryAndParameters;
+import ru.nsu.android.drinkwithme.modules.useCases.GetState;
 
 public class DrinkPresenter implements IDrinkPresenter {
     private Context context;
@@ -49,16 +50,47 @@ public class DrinkPresenter implements IDrinkPresenter {
 
             }
         });
+        GetState getState = new GetState(historyDBHandler);
+        GetState.RequestValues requestValues2 = new GetState.RequestValues();
+        handler.execute(getState, requestValues2, new IUseCaseCallback<GetState.ResponseValues>() {
+            @Override
+            public void onSuccess(GetState.ResponseValues response) {
+                String text = "";
+                switch (response.getState()) {
+                    case -1:
+                        view.showCurrentState(null);
+                        return;
+                    case 0:
+                        text = context.getString(R.string.state_0_name_app_text);
+                        break;
+                    case 1:
+                        text = context.getString(R.string.state_1_name_app_text);
+                        break;
+                    case 2:
+                        text = context.getString(R.string.state_2_name_app_text);
+                        break;
+                    case 3:
+                        text = context.getString(R.string.state_3_name_app_text);
+                        break;
+                }
+                view.showCurrentState(text + " " + context.getString(R.string.condition_app_text));
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
     }
 
     @Override
     public void saveDrink(String name, int percent, double liter) {
         AddHistory addHistory = new AddHistory(historyDBHandler);
-        AddHistory.RequestValues requestValues = new AddHistory.RequestValues(name, percent, liter);
-        handler.execute(addHistory, requestValues, new IUseCaseCallback<AddHistory.ResponseValues>() {
+        AddHistory.RequestValues requestValues1 = new AddHistory.RequestValues(name, percent, liter);
+        handler.execute(addHistory, requestValues1, new IUseCaseCallback<AddHistory.ResponseValues>() {
             @Override
             public void onSuccess(AddHistory.ResponseValues response) {
-
+                start();
             }
 
             @Override
