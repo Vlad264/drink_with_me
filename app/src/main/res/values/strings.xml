@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">DrinkWithMe</string>
 
-    <string name="default_name">Alex</string>
+    <string name="default_name">Алекс</string>
     <string name="default_weight">50</string>
     <string name="default_height">150</string>
     <string name="default_gender">@string/male</string>
@@ -42,6 +42,33 @@
 
     <string name="dot_test_number">5</string>
     <string name="arithmetic_test_number">5</string>
+
+    <string-array name="default_drinks">
+        <item>Пиво</item>
+        <item>Сидр</item>
+        <item>Амстердам</item>
+        <item>Водка</item>
+        <item>Ликер</item>
+        <item>Ром</item>
+        <item>Коньяк</item>
+        <item>Виски</item>
+        <item>Чача</item>
+        <item>Абсент</item>
+        <item>Медицинский спирт</item>
+    </string-array>
+    <string-array name="default_percents">
+        <item>2</item>
+        <item>3</item>
+        <item>7</item>
+        <item>30</item>
+        <item>40</item>
+        <item>40</item>
+        <item>40</item>
+        <item>40</item>
+        <item>60</item>
+        <item>70</item>
+        <item>100</item>
+    </string-array>
 
     <string name="arithmetic_edit_hint">Введите ответ</string>
     <string name="answer">Ответить</string>

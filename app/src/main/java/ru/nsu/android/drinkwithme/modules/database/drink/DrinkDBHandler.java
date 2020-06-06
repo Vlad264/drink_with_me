@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.LinkedList;
 import java.util.List;
 
+import ru.nsu.android.drinkwithme.R;
 import ru.nsu.android.drinkwithme.model.Drink;
 
 public class DrinkDBHandler extends SQLiteOpenHelper implements IDrinkDBHandler {
@@ -27,8 +28,11 @@ public class DrinkDBHandler extends SQLiteOpenHelper implements IDrinkDBHandler 
     private static final String SELECT_ID = "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ID + "=?";
     private static final String SELECT_NAME = "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_NAME + "=?";
 
+    private Context context;
+
     public DrinkDBHandler(Context context) {
         super(context, TABLE_NAME, null, VERSION);
+        this.context = context;
     }
 
     @Override
@@ -136,12 +140,10 @@ public class DrinkDBHandler extends SQLiteOpenHelper implements IDrinkDBHandler 
                 + KEY_NAME + " TEXT,"
                 + KEY_PERCENT + " INTEGER" + ")";
         db.execSQL(CREATE_TABLE);
-        db.execSQL(INSERT, new String[] {"Пиво", "2"});
-        db.execSQL(INSERT, new String[] {"Сидр", "3"});
-        db.execSQL(INSERT, new String[] {"Водка", "30"});
-        db.execSQL(INSERT, new String[] {"Ликер", "30"});
-        db.execSQL(INSERT, new String[] {"Ром", "30"});
-        db.execSQL(INSERT, new String[] {"Абсент", "70"});
-        db.execSQL(INSERT, new String[] {"Медицинский спирт", "100"});
+        String[] drinks = context.getResources().getStringArray(R.array.default_drinks);
+        String[] percents = context.getResources().getStringArray(R.array.default_percents);
+        for (int i = 0; i < drinks.length; ++i) {
+            db.execSQL(INSERT, new String[] {drinks[i], percents[i]});
+        }
     }
 }
